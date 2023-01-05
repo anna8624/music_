@@ -1,0 +1,17 @@
+<!--
+1. 儲存 qtdesigner的檔案
+    file/save as/ 專案(music)/ui/ui_mainwindow.ui
+2. pip install pyqt5
+3. 使用 Pycharm下的 pyuic.exe(若沒有pyuic.exe就是表示pyqt5沒有安裝成功)
+   將 qtdesigner的 xml(.ui) 檔轉成 .py檔
+   a.File/Setting/Tools/External Tools/+
+   b. Name : PyUic5
+   c. Program : 專案下/venv/Scripts/pyuic5.exe
+   d. Arguments: $FileName$ -o $FileNameWithoutExtension$.py
+   e. Working directory : $ProjectFileDir$\ui
+   以上，請參照 : http://mahaljsp.asuscomm.com/index.php/2020/06/29/pycharm_qtdesigner/
+4. 點選 ui/ui_mainwindow.ui右鍵/External Tools/pyuic : 此時會產生 ui_mainwindow.py檔
+   若無此檔，表示上面設定錯誤
+5. 啟動視窗程式 - mp3.py
+
+-->

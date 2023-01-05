@@ -1,0 +1,34 @@
+<!--
+包裝完後會閃退，一率不回答
+    -- 一定要傳 log 檔出來
+1. 系統級 : pip install pyinstaller
+    虛擬環境 : e:\專案下\venv 之下
+    系統級 : C:\Users\mahal\AppData\Local\Programs\Python\Python38
+2. 虛擬環境有安裝的套件，系統級也必需重新安裝一次 : 若漏掉一個沒安裝，就會造成閃退
+    pip install pyqt5 selenium webdriver-manager packaging
+3. 進入命令字元
+    e:(切換磁碟)
+    cd e:\project\python\music
+    dir(列出目前目錄下的檔案)，需有 mp3.py
+4. 包裝成執行檔
+    pyinstaller --hidden-import=queue -F mp3.py
+    包裝完成，會在專案下產生 build及 dist 目錄，dist\mp3.exe 為可執行檔
+    此時會有命令視窗，供開發者除錯用
+5. 取消命令視窗 : 加下　-w
+    a. 一般使用者 : end user : 沒有任何程式基礎的人
+    b. Power user : 玩家級的，達人
+    c. 開發者 : 撰寫程式的人
+    pyinstaller --hidden-import=queue -w -F mp3.py
+    上面的 -w 愈到 selenium 套件會失效，還是會有命令視窗
+6. 修正 selenium 會出現命令視窗的問題
+    a. 開啟 C:\Users\mahal\AppData\Local\Programs\Python\
+            Python3X\Lib\site-packages\selenium\webdriver\common\service.py
+    b. Python 3.7 : def start()
+       Python 3.8 : def _start_process()
+       stdin=PIPE,後加入    creationflags=134217728
+    c. 重新包裝成 exe檔
+       pyinstaller --hidden-import=queue -w -F mp3.py
+7. 最好將 .exe copy 到一台沒有安裝 Python 的電腦測試
+    若有問題，請重新包裝沒有 -w 的執行檔，查看 log
+    (常見:預設路徑"d:\\mp3_tmp"改成"c:\\mp3_tmp"，因為有些電腦沒有D槽)
+-->
